@@ -120,6 +120,7 @@ void gul_int(FILE *file)
                     printf("If value must be a digit or space, invalid value %d ('%c')\n", c, c);
                     exit(1);
                 }
+                c = fgetc(file); // skip the next character since it's supposed to be 'else value'.
             }
             else
             {
