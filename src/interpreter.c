@@ -93,7 +93,7 @@ void gul_int(FILE *file)
         }
         else if (c == '=')
         {
-            regs[currentreg] = ftell(file) + 1;
+            regs[currentreg] = ftell(file);
         }
         else if (c == '^')
         {
@@ -145,7 +145,6 @@ void gul_int(FILE *file)
             while (c != ']')
                 c = fgetc(file);
 
-            c = fgetc(file);
         }
         else if (c == ']')
         {
