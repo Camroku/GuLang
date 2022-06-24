@@ -6,7 +6,6 @@
 void gul_int(FILE *file)
 {
     int currentreg = 0;
-    int settingreg = 0;
     int regs[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int n = 0;
     char c;
@@ -14,19 +13,12 @@ void gul_int(FILE *file)
     {
         if (isdigit(c))
         {
-            if (settingreg)
-            {
-                currentreg = c - '0';
-                settingreg = 0;
-            }
-            else
-            {
-                regs[currentreg] = c - '0';
-            }
+            regs[currentreg] = c - '0';
         }
         else if (c == '`')
         {
-            settingreg = 1;
+            c = fgetc(file);
+            currentreg = c - '0';
         }
         else if (c == '+')
         {
